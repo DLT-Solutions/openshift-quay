@@ -3,6 +3,8 @@
   metadata:
     name: postgres
     namespace: quay-enterprise
+    annotations:
+      pv.beta.kubernetes.io/gid: "1234"
   spec:
     replicas: 1
     template:
@@ -32,3 +34,5 @@
           - name: postgredb
             persistentVolumeClaim:
               claimName: postgres-storage
+        securityContext:
+          fsGroup: 1234
